@@ -8,18 +8,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class AppComponent {
-  constructor(private http: HttpClient) {}
+  id: string;
+  constructor(private http: HttpClient) { this.getAllHeroes();}
   title = 'untitled';
   dataIn: any;
   getAllHeroes(): void {
     console.log('HERE!!!');
     this.dataIn = 'hi';
-    this.http.get<JSON>('http://localhost:8080/api/advertising/all/').subscribe(
+    this.http.get<JSON>('http://localhost:8080/api/advertising', {headers: {id: this.id}}).subscribe(
 
       (response) => { console.log(response);
                       console.log(JSON.stringify(response));
                       this.dataIn = JSON.stringify(response); }
     );
-
   }
 }
