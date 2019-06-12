@@ -1,10 +1,8 @@
 <div style="text-align:center">
-  <h1>
-    <button class = "getAll" (click)="getAllHeroes()">getHeroes</button>
+  <p>
+    <button class = "getAdvertiser" (click)="getAdvertiser()">getHeroes</button>
     <input [(ngModel)]="this.id" placeholder="Enter ID"/>
-    JSON Dump from GET All:
-    {{dataIn}}
-  </h1>
+  </p>
 
 
   <h2>Add an advertiser</h2>
@@ -18,4 +16,12 @@
 
     <button class = "add" (click)="addAdvertiser()">Add a new advertiser</button>
   </p>
+  <h2>Delete an advertiser</h2>
+  <p>
+    <button class = "delete" (click)="deleteAdvertiser()">Delete advertiser</button>
+    <input [(ngModel)]="this.idDelete" placeholder="Enter ID to delete"/>
+  </p>
+  <h1>Messages:<br/>
+    {{dataIn}}
+  </h1>
 </div>
