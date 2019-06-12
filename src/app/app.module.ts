@@ -1,17 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
-import {FormsModule} from '@angular/forms';
+import { DevComponent } from './dev/dev.component';
+
+const appRoutes: Routes = [
+  {path: 'dev', component: DevComponent},
+  {path: 'app', component: AppComponent},
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DevComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true}
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
