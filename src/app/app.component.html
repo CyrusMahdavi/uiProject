@@ -5,4 +5,17 @@
     JSON Dump from GET All:
     {{dataIn}}
   </h1>
+
+
+  <h2>Add an advertiser</h2>
+  <p>
+    <input [(ngModel)]="this.contactName" placeholder="Contact Name"/>
+
+    <input [(ngModel)]="this.creditLimit" placeholder="Credit Limit"/>
+
+    <input [(ngModel)]="this.name" placeholder="Name"/>
+
+
+    <button class = "add" (click)="addAdvertiser()">Add a new advertiser</button>
+  </p>
 </div>

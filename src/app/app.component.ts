@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +8,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class AppComponent {
-  id: string;
-  constructor(private http: HttpClient) { this.getAllHeroes();}
+  id: any;
+  name: string;
+  creditLimit: any;
+  contactName: string;
+  constructor(private http: HttpClient) { this.getAllHeroes(); }
   title = 'untitled';
   dataIn: any;
-  getAllHeroes(): void {
-    console.log('HERE!!!');
-    this.dataIn = 'hi';
+  private params: HttpParams;
+  getAllHeroes() {
     this.http.get<JSON>('http://localhost:8080/api/advertising', {headers: {id: this.id}}).subscribe(
-
       (response) => { console.log(response);
-                      console.log(JSON.stringify(response));
+                      this.dataIn = JSON.stringify(response); }
+    );
+  }
+
+  addAdvertiser() {
+    this.params = new HttpParams().set('contactName', this.contactName)
+      .set('name', this.name)
+      .set('creditLimit', this.creditLimit);
+    this.http.post<JSON>('http://localhost:8080/api/advertising', this.params)
+      .subscribe(
+      (response) => { console.log(response);
                       this.dataIn = JSON.stringify(response); }
     );
   }
