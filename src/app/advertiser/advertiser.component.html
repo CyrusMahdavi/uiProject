@@ -1,0 +1,28 @@
+
+<div style="text-align:center">
+  <p>
+    <button class = "getAdvertiser" (click)="getAdvertiser()">getHeroes</button>
+    <input [(ngModel)]="this.id" placeholder="Enter ID"/>
+  </p>
+
+
+  <h2>Add an advertiser</h2>
+  <p>
+    <input [(ngModel)]="this.contactName" placeholder="Contact Name"/>
+
+    <input [(ngModel)]="this.creditLimit" placeholder="Credit Limit"/>
+
+    <input [(ngModel)]="this.name" placeholder="Name"/>
+
+
+    <button class = "add" (click)="addAdvertiser()">Add a new advertiser</button>
+  </p>
+  <h2>Delete an advertiser</h2>
+  <p>
+    <button class = "delete" (click)="deleteAdvertiser()">Delete advertiser</button>
+    <input [(ngModel)]="this.idDelete" placeholder="Enter ID to delete"/>
+  </p>
+  <h1>Messages:<br/>
+    {{dataIn}}
+  </h1>
+</div>

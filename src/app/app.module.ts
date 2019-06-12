@@ -6,16 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DevComponent } from './dev/dev.component';
+import { AdvertiserComponent } from './advertiser/advertiser.component';
 
 const appRoutes: Routes = [
   {path: 'dev', component: DevComponent},
-  {path: 'app', component: AppComponent},
+  {path: 'advertiser', component: AdvertiserComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DevComponent
+    DevComponent,
+    AdvertiserComponent
   ],
   imports: [
     BrowserModule,
