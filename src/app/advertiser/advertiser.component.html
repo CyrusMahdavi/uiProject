@@ -3,8 +3,9 @@
 
 
   <p>
-    <button class = "getAdvertiser" (click)="getAdvertiser()">getHeroes</button>
+    <button mat-raised-button class = "getAdvertiser" (click)="getAdvertiser()">Get Advertiser</button>
     <mat-form-field >
+      <mat-label>Enter ID of the advertiser to view</mat-label>
     <input matInput [(ngModel)]="this.id"/>
     </mat-form-field>
   </p>

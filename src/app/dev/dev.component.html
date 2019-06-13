@@ -1,4 +1,8 @@
 <mat-form-field appearance="legacy">
-  <mat-label>hi</mat-label>
-  <input matInput >
+  <mat-label>Enter endpoint to view</mat-label>
+  <input matInput [(ngModel)]="this.actuator">
 </mat-form-field>
+<button mat-stroked-button (click)="getEndpoint()">Hellothere!</button>
+<p>
+  {{information}}
+</p>

@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DevComponent } from './dev/dev.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
+import {MatButtonModule} from '@angular/material/button';
 import {
   MatCheckboxModule,
   MatFormFieldModule,
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: true}

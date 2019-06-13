@@ -8,9 +8,15 @@ import {FormGroup, FormBuilder} from '@angular/forms';
   styleUrls: ['./dev.component.css']
 })
 export class DevComponent implements OnInit {
-
-  constructor() {}
+  actuator: string;
+  information: string;
+  constructor(private http: HttpClient) {}
+  getEndpoint() {
+    this.http.get<JSON>('http://localhost:8090/actuator/' + this.actuator).subscribe(
+      (response) => { console.log(response);
+                      this.information = JSON.stringify(response); }
+    );
+  }
   ngOnInit() {
   }
-
 }
