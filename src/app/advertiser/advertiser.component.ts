@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {FormGroup, FormBuilder} from '@angular/forms';
+
 
 @Component({
   selector: 'app-advertiser',
@@ -7,7 +9,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
   styleUrls: ['./advertiser.component.css']
 })
 export class AdvertiserComponent implements OnInit {
-
+  options: FormGroup;
   id: any;
   name: string;
   creditLimit: any;
@@ -16,7 +18,12 @@ export class AdvertiserComponent implements OnInit {
   private params: HttpParams;
   idDelete: any;
   private headers: HttpHeaders;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.options = fb.group({
+      hideRequired: false,
+      floatLabel: 'always',
+    });
+  }
   getAdvertiser() {
     this.http.get<JSON>('http://localhost:8080/api/advertising', {headers: {id: this.id}}).subscribe(
       (response) => { console.log(response);
