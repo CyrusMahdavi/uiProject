@@ -12,9 +12,13 @@ import {
   MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
-  MatRadioModule
+  MatRadioModule, MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  IhmSidenavModule,
+  IhmHeaderModule
+} from '@ihm-software/ihm-ui-common';
 
 const appRoutes: Routes = [
   {path: 'dev', component: DevComponent},
@@ -28,6 +32,9 @@ const appRoutes: Routes = [
     AdvertiserComponent
   ],
   imports: [
+    BrowserModule,
+    IhmSidenavModule,
+    IhmHeaderModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -44,9 +51,12 @@ const appRoutes: Routes = [
       appRoutes,
       {enableTracing: true}
     ),
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  appName: 'hello';
+}

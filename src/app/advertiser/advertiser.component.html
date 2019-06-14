@@ -1,33 +1,50 @@
-
-<div style="text-align:center">
-
-
+<div style="text-align: center;">
+<h2>View an advertiser</h2>
   <p>
-    <button mat-raised-button class = "getAdvertiser" (click)="getAdvertiser()">Get Advertiser</button>
-    <mat-form-field >
-      <mat-label>Enter ID of the advertiser to view</mat-label>
-    <input matInput [(ngModel)]="this.id"/>
+    <mat-form-field appearance="legacy">
+      <mat-label>Enter endpoint to view</mat-label>
+      <input matInput [(ngModel)]="this.id">
     </mat-form-field>
+    <button mat-raised-button  color="primary"(click)="getAdvertiser()">Get Advertiser</button>
   </p>
-
 
   <h2>Add an advertiser</h2>
   <p>
-    <input [(ngModel)]="this.contactName" placeholder="Contact Name"/>
+    <mat-form-field>
 
-    <input [(ngModel)]="this.creditLimit" placeholder="Credit Limit"/>
+      <mat-label>Enter endpoint to view</mat-label>
+      <input matInput [(ngModel)]="this.contactName" placeholder="Contact Name"/>
 
-    <input [(ngModel)]="this.name" placeholder="Name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter endpoint to view</mat-label>
+
+      <input matInput [(ngModel)]="this.creditLimit" placeholder="Credit Limit"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter endpoint to view</mat-label>
+
+      <input matInput [(ngModel)]="this.name" placeholder="Name"/>
+    </mat-form-field>
 
 
-    <button class = "add" (click)="addAdvertiser()">Add a new advertiser</button>
+
+
+    <button mat-raised-button class = "add" (click)="addAdvertiser()">Add a new advertiser</button>
   </p>
+
+
+
   <h2>Delete an advertiser</h2>
   <p>
-    <button class = "delete" (click)="deleteAdvertiser()">Delete advertiser</button>
-    <input [(ngModel)]="this.idDelete" placeholder="Enter ID to delete"/>
+    <mat-form-field>
+      <mat-label>Enter ID</mat-label>
+    <input matInput [(ngModel)]="this.idDelete" placeholder="Enter ID to delete"/>
+    </mat-form-field>
+    <button mat-raised-button class = "delete" (click)="deleteAdvertiser()">Delete advertiser</button>
   </p>
   <h1>Messages:<br/>
     {{dataIn}}
   </h1>
+
 </div>

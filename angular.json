@@ -80,7 +80,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@ihm-software/ihm-ui-common/src/assets/images",
+                "output": "/assets/images"
+              }
             ],
             "styles": [
               "src/styles.css"

@@ -14,7 +14,9 @@ export class DevComponent implements OnInit {
   getEndpoint() {
     this.http.get<JSON>('http://localhost:8090/actuator/' + this.actuator).subscribe(
       (response) => { console.log(response);
-                      this.information = JSON.stringify(response); }
+                      this.information = JSON.stringify(response); },
+      (error) => { console.log(error);
+                   this.information = 'Error! Details: ' + JSON.stringify(error);}
     );
   }
   ngOnInit() {
