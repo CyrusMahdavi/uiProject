@@ -13,13 +13,13 @@ export class AppComponent {
     {
       label: 'Home',
       icon: 'home',
-      link: '/dev',
-      active: true
+      link: '/advertiser',
+      active: false
     },
     {
       label: 'Check',
       icon: 'check_circle',
-      link: '/advertiser',
+      link: '/dev',
       active: false
     }
   ];
