@@ -1,7 +1,7 @@
-//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@ihm-software/ihm-ui-common/src/assets/styles/_ihm-variables';
 @import '~@ihm-software/ihm-ui-common/src/assets/styles/main';
-@import '~@ihm-software/ihm-ui-common/src/assets/styles/ihm-variables';
 
+@import "~ag-grid-community/dist/styles/ag-grid.css";
 .wrap{
   width:90%;
   float:right;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {FormGroup, FormBuilder} from '@angular/forms';
-
+import { AgGridModule} from 'ag-grid-angular';
 
 @Component({
   selector: 'app-advertiser',
@@ -9,12 +9,26 @@ import {FormGroup, FormBuilder} from '@angular/forms';
   styleUrls: ['./advertiser.component.scss']
 })
 export class AdvertiserComponent implements OnInit {
+  columnDefs = [
+    {headerName: 'Make', field: 'make' },
+    {headerName: 'Model', field: 'model' },
+    {headerName: 'Price', field: 'price'}
+  ];
+
+  rowData = [
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxter', price: 72000 }
+  ];
   options: FormGroup;
   id: any;
   name: string;
   creditLimit: any;
   contactName: string;
-  dataIn: string;
+  viewResult: string;
+  addResult: string;
+  deleteResult: string;
+  allResult: string;
   private params: HttpParams;
   idDelete: any;
   private headers: HttpHeaders;
@@ -26,17 +40,26 @@ export class AdvertiserComponent implements OnInit {
     });
   }
   getAdvertiser() {
-    this.http.get<JSON>('http://localhost:8080/api/advertising', {headers: {id: this.id}}).subscribe(
-      (response) => { console.log(response);
-                      this.jsonReceive = response;
-                      this.dataIn = this.jsonReceive.name; },
-      (error) => {this.handleError(error); }
-    );
+    if (this.id == null) {
+      this.viewResult = 'ID is required!';
+    } else {
+      this.http.get<JSON>('http://localhost:8080/api/advertising', {headers: {id: this.id}}).subscribe(
+        (response) => {
+          console.log(response);
+          this.jsonReceive = response;
+          this.viewResult = this.jsonReceive.name;
+        },
+        (error) => {
+          console.log(error);
+          this.viewResult = 'ERROR ' + error.status + ' :' + error.error.message;
+        }
+      );
+    }
   }
 
   addAdvertiser() {
     if (this.contactName == null || this.name == null || this.creditLimit == null) {
-      this.dataIn = 'All fields are required and credit limit must be >0';
+      this.addResult = 'All fields are required and credit limit must be >0';
     } else {
       this.params = new HttpParams()
         .set('contactName', this.contactName)
@@ -45,25 +68,34 @@ export class AdvertiserComponent implements OnInit {
       this.http.post<JSON>('http://localhost:8080/api/advertising', this.params)
         .subscribe(
           (response) => { console.log(response);
-                          this.dataIn = JSON.stringify(response); },
-        (error) => {this.handleError(error); }
+                          this.addResult = JSON.stringify(response); },
+        (error) => { console.log(error);
+                     this.addResult = 'ERROR ' + error.status + ' :' + error.error.message; }
         );
 
     }
   }
 
   deleteAdvertiser() {
-    this.headers = new HttpHeaders();
-    this.http.delete<JSON>('http://localhost:8080/api/advertising' + '?id=' + this.idDelete, {headers: {id: this.idDelete}})
-      .subscribe(
-        (response) => { console.log(response);
-                        this.dataIn = JSON.stringify(response); },
-        (error) => {this.handleError(error); }
-      );
+    if (this.idDelete == null) {
+      this.deleteResult = 'ID is required!';
+    } else {
+      this.headers = new HttpHeaders();
+      this.http.delete<JSON>('http://localhost:8080/api/advertising' + '?id=' + this.idDelete, {headers: {id: this.idDelete}})
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.deleteResult = JSON.stringify(response);
+          },
+          (error) => {
+            console.log(error);
+            this.deleteResult = 'ERROR ' + error.status + ' :' + error.error.message;
+          }
+        );
+    }
   }
-  handleError(error: any) {
-    console.log(error);
-    this.dataIn = 'ERROR ' + error.status + ' :' + error.error.message;
+  allAdvertisers() {
+
   }
   ngOnInit(): void {
   }

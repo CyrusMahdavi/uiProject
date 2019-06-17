@@ -8,6 +8,7 @@ import {IhmHeaderModule, IhmSidenavModule} from '@ihm-software/ihm-ui-common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   constructor() {}
   sidenavLinks = [
     {

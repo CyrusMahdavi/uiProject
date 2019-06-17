@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DevComponent } from './dev/dev.component';
 import { AdvertiserComponent } from './advertiser/advertiser.component';
 import {MatButtonModule} from '@angular/material/button';
+import { AgGridModule} from 'ag-grid-angular';
 import {
   MatCheckboxModule,
   MatFormFieldModule,
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AgGridModule.withComponents([]),
     IhmSidenavModule,
     IhmHeaderModule,
     BrowserModule,
