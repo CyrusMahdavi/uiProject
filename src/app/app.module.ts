@@ -17,7 +17,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   IhmSidenavModule,
-  IhmHeaderModule
+  IhmHeaderModule,
+  IhmUICommonModule
 } from '@ihm-software/ihm-ui-common';
 
 const appRoutes: Routes = [

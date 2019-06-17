@@ -6,7 +6,7 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-advertiser',
   templateUrl: './advertiser.component.html',
-  styleUrls: ['./advertiser.component.css']
+  styleUrls: ['./advertiser.component.scss']
 })
 export class AdvertiserComponent implements OnInit {
   options: FormGroup;

@@ -5,7 +5,7 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-dev',
   templateUrl: './dev.component.html',
-  styleUrls: ['./dev.component.css']
+  styleUrls: ['./dev.component.scss']
 })
 export class DevComponent implements OnInit {
   actuator: string;
@@ -16,7 +16,7 @@ export class DevComponent implements OnInit {
       (response) => { console.log(response);
                       this.information = JSON.stringify(response); },
       (error) => { console.log(error);
-                   this.information = 'Error! Details: ' + JSON.stringify(error);}
+                   this.information = 'Error! Details: ' + JSON.stringify(error); }
     );
   }
   ngOnInit() {

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, Directive} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {IhmHeaderModule, IhmSidenavModule} from '@ihm-software/ihm-ui-common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
   constructor() {}
   sidenavLinks = [
