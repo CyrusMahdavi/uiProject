@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import { AgGridModule} from 'ag-grid-angular';
 
 @Component({
   selector: 'app-advertiser',
@@ -10,16 +9,12 @@ import { AgGridModule} from 'ag-grid-angular';
 })
 export class AdvertiserComponent implements OnInit {
   columnDefs = [
-    {headerName: 'Make', field: 'make' },
-    {headerName: 'Model', field: 'model' },
-    {headerName: 'Price', field: 'price'}
+    {headerName: 'ID', field: 'id' },
+    {headerName: 'Name', field: 'name' },
+    {headerName: 'Contact Name', field: 'contactName'},
+    {headerName: 'Credit Limit', field: 'creditLimit'}
   ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
+  rowData: any;
   options: FormGroup;
   id: any;
   name: string;
@@ -47,7 +42,9 @@ export class AdvertiserComponent implements OnInit {
         (response) => {
           console.log(response);
           this.jsonReceive = response;
-          this.viewResult = this.jsonReceive.name;
+          this.viewResult = 'Name: ' + this.jsonReceive.name +
+            ' | Contact Name: ' + this.jsonReceive.contactName +
+            ' | Credit Limit: ' + this.jsonReceive.creditLimit;
         },
         (error) => {
           console.log(error);
@@ -68,7 +65,7 @@ export class AdvertiserComponent implements OnInit {
       this.http.post<JSON>('http://localhost:8080/api/advertising', this.params)
         .subscribe(
           (response) => { console.log(response);
-                          this.addResult = JSON.stringify(response); },
+                          this.addResult = 'Advertiser successfully added!'; },
         (error) => { console.log(error);
                      this.addResult = 'ERROR ' + error.status + ' :' + error.error.message; }
         );
@@ -85,7 +82,7 @@ export class AdvertiserComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            this.deleteResult = JSON.stringify(response);
+            this.deleteResult = 'Advertiser successfully deleted';
           },
           (error) => {
             console.log(error);
@@ -95,9 +92,21 @@ export class AdvertiserComponent implements OnInit {
     }
   }
   allAdvertisers() {
+      this.http.get<JSON>('http://localhost:8080/api/advertising/all').subscribe(
+        (response) => {
+          console.log(response);
+          this.jsonReceive = response;
+          this.rowData = this.jsonReceive;
+        },
+        (error) => {
+          console.log(error);
+          this.allResult = 'ERROR ' + error.status + ' :' + error.error.message;
+        }
+      );
+    }
 
-  }
   ngOnInit(): void {
+    this.allAdvertisers();
   }
 }
 

@@ -5,6 +5,13 @@
   <input matInput [(ngModel)]="this.actuator">
 </mat-form-field>
 <button mat-raised-button color="primary" (click)="getEndpoint()">Retrieve endpoint</button>
+  <ag-grid-angular
+          style="height : 500px;"
+          class="ag-theme-balham"
+          [rowData]="rowData"
+          [columnDefs]="columnDefs"
+  >
+  </ag-grid-angular>
 <p>
   {{information}}
 </p>

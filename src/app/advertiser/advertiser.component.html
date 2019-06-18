@@ -1,81 +1,72 @@
 <div class="wrap">
+    <mat-tab-group>
+        <mat-tab label="View Advertiser">
+            <h2>View an advertiser</h2>
+            <p>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter ID</mat-label>
+                    <input matInput [(ngModel)]="this.id" required>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="getAdvertiser()">Get Advertiser</button>
+            </p>
 
-  <mat-tab-group >
-    <mat-tab label="View Advertiser">
-      <h2>View an advertiser</h2>
-      <p>
-        <mat-form-field appearance="legacy">
-          <mat-label>Enter ID</mat-label>
-          <input matInput [(ngModel)]="this.id" required>
-        </mat-form-field>
-        <button mat-raised-button  color="primary"(click)="getAdvertiser()">Get Advertiser</button>
-      </p>
+            <h1>
+                {{viewResult}}
+            </h1>
+        </mat-tab>
+        <mat-tab label="Add Advertiser">
+            <h2>Add an advertiser</h2>
+            <p>
+                <mat-form-field>
 
-      <h1>
-        {{viewResult}}
-      </h1>
-    </mat-tab>
-    <mat-tab label="Add Advertiser">
-      <h2>Add an advertiser</h2>
-      <p>
-        <mat-form-field>
+                    <mat-label>Contact Name</mat-label>
+                    <input matInput [(ngModel)]="this.contactName" placeholder="Contact Name" required/>
 
-          <mat-label>Contact Name</mat-label>
-          <input matInput [(ngModel)]="this.contactName" placeholder="Contact Name" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Credit Limit</mat-label>
 
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Credit Limit</mat-label>
+                    <input matInput [(ngModel)]="this.creditLimit" placeholder="Credit Limit" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
 
-          <input matInput [(ngModel)]="this.creditLimit" placeholder="Credit Limit" required/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="this.name" placeholder="Name" required/>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="addAdvertiser()">Add a new advertiser</button>
+            </p>
 
-          <input matInput [(ngModel)]="this.name" placeholder="Name" required/>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="addAdvertiser()">Add a new advertiser</button>
-      </p>
+            <h1>
+                {{addResult}}
+            </h1>
+        </mat-tab>
+        <mat-tab label="Delete Advertiser">
 
-      <h1>
-        {{addResult}}
-      </h1>
-    </mat-tab>
-    <mat-tab label="Delete Advertiser">
+            <h2>Delete an advertiser</h2>
+            <p>
+                <mat-form-field>
+                    <mat-label>Enter ID</mat-label>
+                    <input matInput [(ngModel)]="this.idDelete" required/>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="deleteAdvertiser()">Delete advertiser</button>
+            </p>
 
-      <h2>Delete an advertiser</h2>
-      <p>
-        <mat-form-field>
-          <mat-label>Enter ID</mat-label>
-          <input matInput [(ngModel)]="this.idDelete" required/>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="deleteAdvertiser()">Delete advertiser</button>
-      </p>
-
-      <h1>
-        {{deleteResult}}
-      </h1>
-    </mat-tab>
-    <mat-tab label="View all Advertisers">
-      <button mat-raised-button color="primary" (click)="getAll()">Get Advertisers</button>
-      <ag-grid-angular
-              style="width: 500px; height: 500px;"
-              [rowData]="rowData"
-              [columnDefs]="columnDefs"
-      >
-      </ag-grid-angular>
-      <h1>
-        {{allResult}}
-      </h1>
-    </mat-tab>
-  </mat-tab-group>
-
-
-
-
-
-
-
-
-
+            <h1>
+                {{deleteResult}}
+            </h1>
+        </mat-tab>
+        <mat-tab label="View all Advertisers">
+            <button mat-raised-button color="primary" (click)="allAdvertisers()">Update!</button>
+            <ag-grid-angular
+                    style="height : 500px;"
+                    class="ag-theme-balham"
+                    [rowData]="rowData"
+                    [columnDefs]="columnDefs"
+            >
+            </ag-grid-angular>
+            <h1>
+                {{allResult}}
+            </h1>
+        </mat-tab>
+    </mat-tab-group>
 </div>
