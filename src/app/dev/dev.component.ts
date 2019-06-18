@@ -12,7 +12,7 @@ export class DevComponent implements OnInit {
    ];
   //  columnDefs: any = [];
 
-  rowData: JSON;
+  rowData: any;
   /*
   columnDefs: [
     {headerName: 'STATUS', field: 'status'}];
@@ -22,12 +22,13 @@ export class DevComponent implements OnInit {
   private jsonReceive: any;
   information: string;
   private columnNames: string[];
+  myData: any;
   constructor(private http: HttpClient) {}
   getEndpoint() {
     this.http.get<JSON>('http://localhost:8090/actuator/' + this.actuator).subscribe(
       (response) => { console.log(response);
                       console.log(JSON.stringify(response));
-                      // this.information = JSON.stringify(response);
+                      this.information = JSON.stringify(response);
                       // this.jsonReceive = response;
                       this.rowData = JSON.parse('[' + JSON.stringify(response) + ']');
                       console.log(this.rowData);
@@ -46,7 +47,7 @@ export class DevComponent implements OnInit {
         headerName : this.columnNames[i],
         field : this.columnNames[i]
       };
-      console.log('TEST ' + i + data[i]);
+      // console.log('TEST ' + i + JSON.stringify(data[this.columnNames[i]]));
       this.columnDefs.push(this.myObj);
     }
     console.log(this.columnDefs);
